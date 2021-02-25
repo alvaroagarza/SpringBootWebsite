@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Subscriber Sign-Up</title>
+<title>My Homework Website</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" href="styles/styles.css">
 </head>
@@ -9,8 +9,7 @@
 	<h3>Subscriber Sign-up Form</h3>
 	<p>Thank you for signing up!</p>
 	<h4>Subscriber:</h4>
-	<p th:text="${firstName}" />
-	<p th:text="${lastName}" />
+	<p th:text="${firstName} + ' ' + ${lastName}" />
 	
 	<a th:href="@{/}"> Return </a>
 </body>
