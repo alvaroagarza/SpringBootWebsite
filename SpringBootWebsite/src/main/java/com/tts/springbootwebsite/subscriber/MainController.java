@@ -1,0 +1,41 @@
+package com.tts.springbootwebsite.subscriber;
+
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+
+@Controller
+public class MainController {
+
+	  @Autowired
+	  private SubscriberRepository subscriberRepository;
+	  
+	  @GetMapping(value= "/")
+	  public String index(Subscriber subscriber) {
+		return "index";
+	  }
+	  
+	  private Subscriber subscriber;
+	  @PostMapping(value = "/")
+	  public String addNewSubscriber(Subscriber subscriber, Model model) {
+	  	subscriberRepository.save(new Subscriber(subscriber.getFirstName(), 
+	          subscriber.getLastName(), subscriber.getUserName(), subscriber.getSignedUp()));
+	  	model.addAttribute("firstName", subscriber.getFirstName());
+	  	model.addAttribute("lastName", subscriber.getLastName());
+	  	model.addAttribute("userName", subscriber.getUserName());
+	  	return "result";
+	  	
+	  }
+    
+    @GetMapping(value= "/test")
+    public String test() {
+    	return "test";
+    }
+}
